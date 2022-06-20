@@ -1,0 +1,249 @@
+- Conv2d_1:
+  - TYPE: load
+    HEX: 10040000 00020012 00000000
+    PARAM:
+      wait: 0
+      release: 0
+      iwb_id: 1
+      bank_id: 0
+      bank_addr: 0
+      line_size: 1
+      total_size: 9
+      zero_fill: 0
+      ddr_addr: 0
+  - TYPE: load
+    HEX: 10080000 00040004 00000010
+    PARAM:
+      wait: 0
+      release: 0
+      iwb_id: 2
+      bank_id: 0
+      bank_addr: 0
+      line_size: 2
+      total_size: 2
+      zero_fill: 0
+      ddr_addr: 16
+  - TYPE: conv_init
+    HEX: b2222800 00000006 00200400 002c0000
+    PARAM:
+      kernel_w: 2
+      kernel_h: 2
+      stride_w: 2
+      stride_h: 2
+      add_bias: 1
+      bias_right_shift: 0
+      shift_bias: 0
+      shift_cut: 0
+      stride_h_next: 0
+      input_channel: 0
+      output_channel: 0
+      img_addr_jump: 6
+      out_addr_jump: 2
+      img_width: 1
+      ratio_w: 0
+      out_offset_diff: 0
+      bias_offset_diff: 0
+      ratio_h: 0
+      nonlinear: 1
+      deconv_next: 0
+      is_in_uint8: 1
+      is_out_uint8: 1
+  - TYPE: load
+    HEX: 10000000 0002000c 00100000
+    PARAM:
+      wait: 0
+      release: 0
+      iwb_id: 0
+      bank_id: 0
+      bank_addr: 0
+      line_size: 1
+      total_size: 6
+      zero_fill: 0
+      ddr_addr: 1048576
+  - TYPE: load
+    HEX: 10001000 0002000c 00100012
+    PARAM:
+      wait: 0
+      release: 0
+      iwb_id: 0
+      bank_id: 1
+      bank_addr: 0
+      line_size: 1
+      total_size: 6
+      zero_fill: 0
+      ddr_addr: 1048594
+  - TYPE: load
+    HEX: 10000006 0002000c 00100006
+    PARAM:
+      wait: 0
+      release: 0
+      iwb_id: 0
+      bank_id: 0
+      bank_addr: 6
+      line_size: 1
+      total_size: 6
+      zero_fill: 0
+      ddr_addr: 1048582
+  - TYPE: load
+    HEX: 10001006 0002000c 00100018
+    PARAM:
+      wait: 0
+      release: 0
+      iwb_id: 0
+      bank_id: 1
+      bank_addr: 6
+      line_size: 1
+      total_size: 6
+      zero_fill: 0
+      ddr_addr: 1048600
+  - TYPE: load
+    HEX: 1000000c 0002000c 0010000c
+    PARAM:
+      wait: 0
+      release: 0
+      iwb_id: 0
+      bank_id: 0
+      bank_addr: 12
+      line_size: 1
+      total_size: 6
+      zero_fill: 0
+      ddr_addr: 1048588
+  - TYPE: load
+    HEX: 1020100c 0002000c 0010001e
+    PARAM:
+      wait: 0
+      release: 2
+      iwb_id: 0
+      bank_id: 1
+      bank_addr: 12
+      line_size: 1
+      total_size: 6
+      zero_fill: 0
+      ddr_addr: 1048606
+  - TYPE: conv
+    HEX: 34200000 20a00000 00000000
+    PARAM:
+      wait: 4
+      release: 2
+      bank_addr_in: 0
+      pad_left: 0
+      pad_top: 0
+      pad_right: 2
+      pad_bottom: 5
+      bank_id_out: 0
+      row_offset: 0
+      bank_addr_weight: 0
+      bank_addr_out: 0
+      bank_addr_offset: 0
+  - TYPE: save
+    HEX: 22000000 00020000 00020203 00000000 00000000
+    PARAM:
+      wait: 2
+      release: 0
+      iwb_id: 0
+      bank_id: 0
+      bank_addr: 0
+      total_size: 2
+      bank_step: 0
+      bank_offset: 0
+      line_size: 1
+      scale: 1
+      shift_cut: 0
+      is_in_uint8: 1
+      is_out_uint8: 1
+      ddr_step: 0
+      ddr_addr: 0
+  - TYPE: save
+    HEX: 20401000 00020000 00020203 00000000 00000002
+    PARAM:
+      wait: 0
+      release: 4
+      iwb_id: 0
+      bank_id: 1
+      bank_addr: 0
+      total_size: 2
+      bank_step: 0
+      bank_offset: 0
+      line_size: 1
+      scale: 1
+      shift_cut: 0
+      is_in_uint8: 1
+      is_out_uint8: 1
+      ddr_step: 0
+      ddr_addr: 2
+- MaxPool2d_1:
+  - TYPE: pool_init
+    HEX: c0024800 00016000
+    PARAM:
+      input_channel: 0
+      kernel_w: 1
+      kernel_h: 1
+      stride_w: 1
+      img_width: 0
+      type: 0
+      shift_cut: 0
+      addr_jump: 2
+      is_in_uint8: 1
+      is_out_uint8: 1
+  - TYPE: load
+    HEX: 14008000 00020004 00000000
+    PARAM:
+      wait: 4
+      release: 0
+      iwb_id: 0
+      bank_id: 8
+      bank_addr: 0
+      line_size: 1
+      total_size: 2
+      zero_fill: 0
+      ddr_addr: 0
+  - TYPE: load
+    HEX: 10109000 00020004 00000002
+    PARAM:
+      wait: 0
+      release: 1
+      iwb_id: 0
+      bank_id: 9
+      bank_addr: 0
+      line_size: 1
+      total_size: 2
+      zero_fill: 0
+      ddr_addr: 2
+  - TYPE: pool
+    HEX: 44200024 00000000
+    PARAM:
+      wait: 4
+      release: 2
+      bank_id_in: 0
+      bank_id_out: 0
+      pad_left: 0
+      pad_top: 0
+      pad_right: 1
+      pad_bottom: 1
+      bank_addr_in: 0
+      bank_addr_out: 0
+  - TYPE: save
+    HEX: 21808000 00010000 00020203 00000000 00100000
+    PARAM:
+      wait: 1
+      release: 8
+      iwb_id: 0
+      bank_id: 8
+      bank_addr: 0
+      total_size: 1
+      bank_step: 0
+      bank_offset: 0
+      line_size: 1
+      scale: 1
+      shift_cut: 0
+      is_in_uint8: 1
+      is_out_uint8: 1
+      ddr_step: 0
+      ddr_addr: 1048576
+- system:
+  - TYPE: system
+    HEX: '04000000'
+    PARAM:
+      wait: 4
+      release: 0
+      func: 0

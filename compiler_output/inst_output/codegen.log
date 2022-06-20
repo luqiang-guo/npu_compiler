@@ -1,0 +1,23 @@
+##############################
+LAYER INFO
+------------------------------
+generate Conv2d_1...
+input addr 1048576
+input len 36
+weights addr 0,16
+weights len 16,16
+output addr 0
+output len 4
+wait_flag 0, release_flag 1
+output_channel 1, output_width 2, input_range [0 5], input_dependency_len 113, output_dependency_len 1024, load num 1 conv num 1
+save count 2
+
+generate MaxPool2d_1...
+input addr 0
+input len 4
+output addr 1048576
+output len 1
+wait_flag 1, release_flag 2
+output_width 1, input_range [0 1], input_dependency_len 4096, output_dependency_len 16384, num 1
+save count 3
+

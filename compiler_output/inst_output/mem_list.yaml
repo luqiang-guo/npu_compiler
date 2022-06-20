@@ -1,0 +1,35 @@
+- name: Input_1
+  release:
+  - addr: 1048576
+    name: Input_1
+    size: 36
+    waiting: 1
+- name: Conv2d_1
+  wait:
+  - name: Input_1
+    size: 36
+    can_free: 1
+    addr: 1048576
+  release:
+  - name: Conv2d_1
+    size: 4
+    waiting: 1
+    addr: 0
+  param:
+  - name: Conv2d_1_weight
+    size: 16
+    addr: 0
+  - name: Conv2d_1_bias
+    size: 16
+    addr: 16
+- name: MaxPool2d_1
+  wait:
+  - name: Conv2d_1
+    size: 4
+    can_free: 1
+    addr: 0
+  release:
+  - name: MaxPool2d_1
+    size: 1
+    waiting: 0
+    addr: 1048576

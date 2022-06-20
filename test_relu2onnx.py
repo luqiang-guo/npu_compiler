@@ -8,9 +8,11 @@ import sys
 # 
 NPU_ROOTPATH = "/home/guoluqiang/nova/compiler/"
 # quantizer
-sys.path.append(NPU_ROOTPATH + "npu_quantizer") 
+sys.path.append(NPU_ROOTPATH + "npu_quantizer")
+sys.path.append(NPU_ROOTPATH + "npu_compiler") 
 
 from quantize import run_quantizer
+from compile import run_compiler
 
 input_shape = (1)
 onnx_file = "test_relu.onnx"
@@ -74,6 +76,9 @@ def main():
     ir_graph = run_quantizer(onnx_model, [input_shape], dataloader=val_loader,
                          num_batchs=1, save_dir='./ir_output', debug=True, load_type="onnx")
 
+
+    run_compiler(input_dir='./ir_output', output_dir='./compiler_output',
+             enable_cmodel=True, enable_rtl_model=True, enable_profiler=True)
 
 if __name__ == "__main__":
     main()
