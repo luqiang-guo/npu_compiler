@@ -1,4 +1,5 @@
 *.onnx
 ir_output/
+compiler_output
 models/
 __pycache__/
