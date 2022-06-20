@@ -130,18 +130,18 @@ def main():
     # test
     test(model)
 
-    # dummy_input = torch.randn((1,1,6,6), requires_grad=True)
-    # y = model(dummy_input)
+    dummy_input = torch.randn((1,1,6,6), requires_grad=True)
+    y = model(dummy_input)
 
-    # onnx_model = to_onnx(model, dummy_input, onnx_filename)
-    # print(onnx_model)
+    onnx_model = to_onnx(model, dummy_input, onnx_filename)
+    print(onnx_model)
 
-    # _, val_loader = get_dataloader()
-    # ir_graph = run_quantizer(onnx_model, [(1,1,6,6)], dataloader=val_loader,
-    #                             num_batchs=1, save_dir='./ir_output', debug=True, load_type="onnx")
+    _, val_loader = get_dataloader()
+    ir_graph = run_quantizer(onnx_model, [(1,1,6,6)], dataloader=val_loader,
+                                num_batchs=1, save_dir='./ir_output', debug=True, load_type="onnx")
 
-    # run_compiler(input_dir='./ir_output', output_dir='./compiler_output',
-    #              enable_cmodel=True, enable_rtl_model=True, enable_profiler=True)
+    run_compiler(input_dir='./ir_output', output_dir='./compiler_output',
+                 enable_cmodel=True, enable_rtl_model=True, enable_profiler=True)
 
 if __name__ == "__main__" :
     main()
